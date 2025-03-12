@@ -10,8 +10,7 @@ def scrape_quotes_by_tags(base_url, tags, quotes_per_tag=2):
 
         for tag in tags:
             tag_url = f"{base_url}/tag/{tag}/"  # Construct URL for each tag
-            headers = {"User-Agent": ""} # Define your User-Agent
-            response = requests.get(tag_url, headers=headers, timeout=(3, 10))
+            response = requests.get(tag_url, timeout=(3, 10))
             response.raise_for_status()
             
             soup = BeautifulSoup(response.text, 'html.parser')
